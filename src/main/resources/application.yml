@@ -1,0 +1,42 @@
+### datasource Configuration
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+  ### hibernate Configuration
+  jpa:
+    database: mysql
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  # SpringMail发送邮件相关配置
+  mail:
+    # 发送邮件的账号名
+    username: send@mail.com
+    # 授权码
+    password: xxx
+    # smtp服务主机  qq邮箱的服务主机为smtp.qq.com google邮箱：smtp.gmail.com  163邮箱：smtp.163.com
+    host: smtp.163.com
+    # 服务协议
+    protocol: smtp
+    # 编码集
+    default-encoding: UTF-8
+    # 服务端口
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+          starttls:
+            enable: true
+            required: true
